@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: 9ec2b63e5577b334e9727f2f151d8f24
-timeCreated: 1505791976
+guid: 0e5db64fffc6ef34ab2fc328bd7cf656
+timeCreated: 1506404723
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Player_0
-    21300002: Player_1
-    21300004: Player_2
-    21300006: Player_3
-    21300008: Player_4
-    21300010: Player_5
-    21300012: Player_6
-    21300014: Player_7
-    21300016: Player_8
-    21300018: Player_9
-    21300020: Player_10
-    21300022: Player_11
+    21300000: PlayerAldo_0
+    21300002: PlayerAldo_1
+    21300004: PlayerAldo_2
+    21300006: PlayerAldo_3
+    21300008: PlayerAldo_4
+    21300010: PlayerAldo_5
+    21300012: PlayerAldo_6
+    21300014: PlayerAldo_7
+    21300016: PlayerAldo_8
+    21300018: PlayerAldo_9
+    21300020: PlayerAldo_10
+    21300022: PlayerAldo_11
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -42,7 +42,7 @@ TextureImporter:
     filterMode: 0
     aniso: 16
     mipBias: -1
-    wrapMode: 0
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: PlayerAldo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,7 +119,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_1
+      name: PlayerAldo_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,7 +132,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_2
+      name: PlayerAldo_2
       rect:
         serializedVersion: 2
         x: 64
@@ -145,7 +145,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_3
+      name: PlayerAldo_3
       rect:
         serializedVersion: 2
         x: 0
@@ -158,7 +158,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_4
+      name: PlayerAldo_4
       rect:
         serializedVersion: 2
         x: 32
@@ -171,7 +171,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_5
+      name: PlayerAldo_5
       rect:
         serializedVersion: 2
         x: 64
@@ -184,7 +184,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_6
+      name: PlayerAldo_6
       rect:
         serializedVersion: 2
         x: 0
@@ -197,7 +197,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_7
+      name: PlayerAldo_7
       rect:
         serializedVersion: 2
         x: 32
@@ -210,7 +210,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_8
+      name: PlayerAldo_8
       rect:
         serializedVersion: 2
         x: 64
@@ -223,7 +223,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_9
+      name: PlayerAldo_9
       rect:
         serializedVersion: 2
         x: 0
@@ -236,7 +236,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_10
+      name: PlayerAldo_10
       rect:
         serializedVersion: 2
         x: 32
@@ -249,7 +249,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Player_11
+      name: PlayerAldo_11
       rect:
         serializedVersion: 2
         x: 64
