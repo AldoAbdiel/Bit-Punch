@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	private Animator anim;
-
+	public GameObject collider;
 	void Start () {
-		anim = GetComponent<Animator>();	
+		anim = GetComponent<Animator>();
+		
 	}
 	
 	// Update is called once per frame
@@ -18,11 +19,20 @@ public class PlayerMovement : MonoBehaviour {
 		bool isWalking = (Mathf.Abs(input_x) + Mathf.Abs(input_y)) > 0;
 
 		anim.SetBool("isWalking", isWalking);
+
 		if(isWalking){
 			anim.SetFloat("x", input_x);
 			anim.SetFloat("y", input_y);
 
 			transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime;
 		}
+
+		if(input_x == 1){
+			collider.transform.position = new Vector3(this.transform.position.x + 0.12f, collider.transform.position.y, collider.transform.position.z);
+		}else if(input_x == -1){
+			collider.transform.position = new Vector3(this.transform.position.x - 0.12f, collider.transform.position.y, collider.transform.position.z);
+		}
+
+		
 	}
 }
