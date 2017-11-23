@@ -6,33 +6,36 @@ public class PlayerMovement : MonoBehaviour {
 
 	private Animator anim;
 	public GameObject collider;
+	private bool isPunching;
 	void Start () {
+		isPunching = false;
 		anim = GetComponent<Animator>();
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		float input_x = Input.GetAxisRaw("Horizontal");
-		float input_y = Input.GetAxisRaw("Vertical");
+		isPunching = collider.GetComponent<PlayerAttack>().isPunching;
 
-		bool isWalking = (Mathf.Abs(input_x) + Mathf.Abs(input_y)) > 0;
+		if(!isPunching){ // prevent movement during punch animation
+			float input_x = Input.GetAxisRaw("Horizontal");
+			float input_y = Input.GetAxisRaw("Vertical");
 
-		anim.SetBool("isWalking", isWalking);
+			bool isWalking = (Mathf.Abs(input_x) + Mathf.Abs(input_y)) > 0;
 
-		if(isWalking){
-			anim.SetFloat("x", input_x);
-			anim.SetFloat("y", input_y);
+			anim.SetBool("isWalking", isWalking);
 
-			transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime;
+			if(isWalking){
+				anim.SetFloat("x", input_x);
+				anim.SetFloat("y", input_y);
+
+				transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime;
+			}
+
+			if(input_x == 1){
+				collider.transform.position = new Vector3(this.transform.position.x + 0.12f, collider.transform.position.y, collider.transform.position.z);
+			}else if(input_x == -1){
+				collider.transform.position = new Vector3(this.transform.position.x - 0.12f, collider.transform.position.y, collider.transform.position.z);
+			}
 		}
-
-		if(input_x == 1){
-			collider.transform.position = new Vector3(this.transform.position.x + 0.12f, collider.transform.position.y, collider.transform.position.z);
-		}else if(input_x == -1){
-			collider.transform.position = new Vector3(this.transform.position.x - 0.12f, collider.transform.position.y, collider.transform.position.z);
-		}
-
-		
 	}
 }
