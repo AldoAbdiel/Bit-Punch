@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114606885429620736}
   - component: {fileID: 61070687380551140}
   - component: {fileID: 50876154138794044}
+  - component: {fileID: 114128311088213202}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -128,9 +129,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.0027672537, y: -0.14608327}
+  m_Offset: {x: -0.0011571646, y: -0.14608327}
   serializedVersion: 2
-  m_Size: {x: 0.15949896, y: 0.04336971}
+  m_Size: {x: 0.10455708, y: 0.04336971}
 --- !u!61 &61230903659811568
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -142,9 +143,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.030667126, y: -0.021067679}
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.09866535, y: 0.10299343}
 --- !u!95 &95735129506856562
 Animator:
   serializedVersion: 3
@@ -162,6 +163,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114128311088213202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1429314225638530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc35540b5fc9cc4790c2d0d183a0736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 0}
 --- !u!114 &114606885429620736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 1256854501971040}
+  playerIsAttacked: 0
 --- !u!114 &114987853533369086
 MonoBehaviour:
   m_ObjectHideFlags: 1

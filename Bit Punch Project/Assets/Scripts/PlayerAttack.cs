@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 
-	//private Animator anim;
 	public GameObject fatherObjetc;
 	private Animator anim, enemyAnim;
 	public BoxCollider2D colliderPunch;
 	public bool isPunching = false;
 
-	//private float enemyLife = EnemyDeath.enemyLife;
-	//private bool getIsHurted = EnemyRoutine.isHurted;
-
 	void Start () {
 		anim = fatherObjetc.GetComponent(typeof(Animator)) as Animator;
-		//anim["isPunching"].time = 0.0f;
 	}
 	
 	void Update () {
@@ -42,18 +37,14 @@ public class PlayerAttack : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider){
 		GameObject objectCollided = collider.gameObject;
 		
-		if(objectCollided.CompareTag("Enemy")){
-			//Debug.Log("golpe realizado");
-
-			// Handle animation
+		if(objectCollided.CompareTag("Enemy")){ // if the target object is an enemy
+			// Handle enemy animation
 			enemyAnim = objectCollided.GetComponent<Animator>();
 			enemyAnim.SetBool("isHurt", true);
-			objectCollided.transform.position = new Vector3(objectCollided.transform.position.x , objectCollided.transform.position.y, 0);
 			objectCollided.GetComponent<EnemyRoutine>().getDelay(objectCollided);
 
-			// Do damage to enemy
+			// Make damage to enemy
 			objectCollided.GetComponent<EnemyDeath>().takeDamage();
-
 		}
 	}
 }

@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour {
 	private Animator anim;
 	public GameObject collider;
 	private bool isPunching;
+	public bool playerIsAttacked;
+	
 	void Start () {
 		isPunching = false;
 		anim = GetComponent<Animator>();
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			anim.SetBool("isWalking", isWalking);
 
-			if(isWalking){
+			if(isWalking && !playerIsAttacked){
 				anim.SetFloat("x", input_x);
 				anim.SetFloat("y", input_y);
 
@@ -36,6 +38,21 @@ public class PlayerMovement : MonoBehaviour {
 			}else if(input_x == -1){
 				collider.transform.position = new Vector3(this.transform.position.x - 0.12f, collider.transform.position.y, collider.transform.position.z);
 			}
+		}
+	}
+
+	public void getDelay(GameObject pObject){
+		playerIsAttacked = true;
+		StartCoroutine(PlayerHurtDelay(pObject));
+	}
+
+	IEnumerator PlayerHurtDelay(GameObject objectCollided){
+		Animator enemyAnim = objectCollided.GetComponent<Animator>();
+		while (true) {
+			yield return new WaitForSeconds(1.0f); // anim duration
+			enemyAnim.SetBool("isHurted", false);
+			playerIsAttacked = false;
+			StopAllCoroutines();
 		}
 	}
 }

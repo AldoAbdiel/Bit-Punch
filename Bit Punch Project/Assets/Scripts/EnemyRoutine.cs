@@ -6,19 +6,20 @@ public class EnemyRoutine : MonoBehaviour {
 
 	// Use this for initialization
 	private Animator anim;
+
+	public GameObject collider;
 	private bool movementController = true;
 
-	private bool enemyIsAttacked = false;
+	public bool enemyIsAttacked = false;
 
-	//public static bool isHurted = false;
 	void Start () {
 		anim = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(!enemyIsAttacked){
 			if(this.transform.position.x < 1 && movementController == true){
+				collider.transform.position = new Vector3(this.transform.position.x + 0.12f, collider.transform.position.y, collider.transform.position.z);
 				transform.position += new Vector3(2.0f, 0, 0).normalized * Time.deltaTime;
 				anim.SetFloat("x", 1f);
 			}else{
@@ -26,6 +27,7 @@ public class EnemyRoutine : MonoBehaviour {
 			}
 
 			if(this.transform.position.x > -1 && movementController == false){
+				collider.transform.position = new Vector3(this.transform.position.x - 0.12f, collider.transform.position.y, collider.transform.position.z);
 				transform.position += new Vector3(-2.0f, 0, 0).normalized * Time.deltaTime;
 				anim.SetFloat("x", -1f);
 			}else{
@@ -36,19 +38,17 @@ public class EnemyRoutine : MonoBehaviour {
 
 	public void getDelay(GameObject objectCollided){
 		enemyIsAttacked = true;
+		collider.GetComponent<EnemyAttack>().enabled = false;
 		StartCoroutine(EnemyHurDelay(objectCollided));
 	}
-	public IEnumerator EnemyHurDelay(GameObject objectCollided){
+	IEnumerator EnemyHurDelay(GameObject objectCollided){
 		Animator enemyAnim = objectCollided.GetComponent<Animator>();
 		while (true) {
 			yield return new WaitForSeconds(1.0f); // anim duration
 			enemyAnim.SetBool("isHurt", false);
 			enemyIsAttacked = false;
+			collider.GetComponent<EnemyAttack>().enabled = true;
 			StopAllCoroutines();
 		}
-	}
-
-	public void prueba(bool valor){
-		enemyIsAttacked = valor;
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour {
 
 	public GameObject fatherObjetc;
-	private Animator anim;
+	private Animator anim, playerAnim;
 	public BoxCollider2D colliderPunch;
 
 	private bool isPunching;
@@ -16,27 +16,34 @@ public class EnemyAttack : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ( ) {
 		StartCoroutine(AutoPunch());
 	}
 
 	IEnumerator AutoPunch(){
 
 		while (true) {
-			//isPunching = true;
-			yield return new WaitForSeconds(Random.Range(3.0f, 6.0f));
+			yield return new WaitForSeconds(Random.Range(1.0f, 8.0f));
 			anim.SetBool("isPunching", true);
-			//fatherObjetc.GetComponent<EnemyRoutine>()
-			fatherObjetc.GetComponent<EnemyRoutine>().prueba(true);
+			colliderPunch.enabled = true;
+
 			yield return new WaitForSeconds(0.5f);
 			anim.SetBool("isPunching", false);
-			fatherObjetc.GetComponent<EnemyRoutine>().prueba(false);
-			//fatherObjetc.GetComponent<EnemyRoutine>().enabled = false;
-			
-			//colliderPunch.enabled = false;
-			//isPunching = false;
-			//anim.SetBool("isPunching", isPunching);
+			colliderPunch.enabled = false;
 			StopAllCoroutines();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D collider){
+		GameObject objectCollided = collider.gameObject;
+		
+		if(objectCollided.CompareTag("Player")){
+			playerAnim = objectCollided.GetComponent<Animator>();
+			playerAnim.SetBool("isHurted", true);
+			objectCollided.GetComponent<PlayerMovement>().getDelay(objectCollided);
+
+			// Make damage to player
+			objectCollided.GetComponent<PlayerDeath>().takeDamage();
 		}
 	}
 }
